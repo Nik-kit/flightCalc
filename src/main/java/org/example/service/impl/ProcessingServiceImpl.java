@@ -25,8 +25,8 @@ public class ProcessingServiceImpl implements ProcessingService {
 
         for (TicketsItem ticket : tickets) {
             if (ticket.getOrigin().equals("VVO") && ticket.getDestination().equals("TLV")) {
-                LocalTime timeDifference = getTimeDifference(ticket.getDepartureDate() + " " + ticket.getDepartureTime(),
-                        ticket.getArrivalDate() + " " + ticket.getArrivalTime());
+                LocalTime timeDifference = getTimeDifference(ticket.getDepartureDate().atTime(ticket.getDepartureTime()),
+                        ticket.getArrivalDate().atTime(ticket.getArrivalTime()));
 
                 if (minFlightTimeMap.containsKey(ticket.getCarrier())) {
                     if (minFlightTimeMap.get(ticket.getCarrier()).isAfter(timeDifference)) {
@@ -79,17 +79,13 @@ public class ProcessingServiceImpl implements ProcessingService {
     }
 
     @Override
-    public LocalTime getTimeDifference(String departureTime, String arrivalTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
+    public LocalTime getTimeDifference(LocalDateTime departureTime, LocalDateTime arrivalTime) {
 
-        LocalDateTime localDepartureDateTime = LocalDateTime.parse(departureTime, formatter);
-        LocalDateTime localArrivalDateTime = LocalDateTime.parse(arrivalTime, formatter);
+        Duration duration = Duration.between(departureTime, arrivalTime);
 
-        Duration duration = Duration.between(localDepartureDateTime, localArrivalDateTime);
+        String hours = String.format("%02d", duration.toHoursPart());
 
-        String hours = (duration.toHoursPart() > 9) ? "" + duration.toHoursPart() : String.format("%02d", duration.toHoursPart());
-
-        String minutes = (duration.toMinutesPart() > 9) ? "" + duration.toMinutesPart() : String.format("%02d", duration.toMinutesPart());
+        String minutes = String.format("%02d", duration.toMinutesPart());
 
         LocalTime localDurationTime = LocalTime.parse(hours + ":" + minutes);
 

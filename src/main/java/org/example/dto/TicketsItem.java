@@ -16,8 +16,8 @@ public class TicketsItem{
 	private String carrier;
 
 	@JsonProperty("arrival_time")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="HH:mm")
-	private String arrivalTime;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="H:mm")
+	private LocalTime arrivalTime;
 
 	@JsonProperty("price")
 	private Integer price;
@@ -27,7 +27,7 @@ public class TicketsItem{
 
 	@JsonProperty("departure_date")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="dd.MM.yy")
-	private String departureDate;
+	private LocalDate departureDate;
 
 	@JsonProperty("destination")
 	private String destination;
@@ -39,12 +39,12 @@ public class TicketsItem{
 	private Integer stops;
 
 	@JsonProperty("departure_time")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="HH:mm")
-	private String departureTime;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="H:mm")
+	private LocalTime departureTime;
 
 	@JsonProperty("arrival_date")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="dd.MM.yy")
-	private String arrivalDate;
+	private LocalDate arrivalDate;
 
 	@JsonProperty("origin_name")
 	private String originName;
