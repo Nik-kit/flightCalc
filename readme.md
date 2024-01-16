@@ -1,3 +1,8 @@
+### Project configuration 
+
+Adjust java version in pom.xml according to java installed on the target machine
+`<java.version>20</java.version>`
+
 ### Build and run
 
 ```
