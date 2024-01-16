@@ -2,16 +2,12 @@ package org.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import lombok.extern.slf4j.Slf4j;
 import org.example.dto.FlightContainer;
 import org.example.service.ProcessingService;
 import org.example.service.impl.ProcessingServiceImpl;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Scanner;
 
 //@Slf4j(topic = "MAIN_APP")
 public class App {
