@@ -58,7 +58,7 @@ public class ProcessingServiceImpl implements ProcessingService {
 
         double average = Arrays.stream(pricesInt).average().getAsDouble();
 
-        Arrays.stream(pricesInt).sorted();
+        Arrays.sort(pricesInt);
 
         double median;
 

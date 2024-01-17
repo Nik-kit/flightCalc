@@ -12,10 +12,7 @@ import java.io.InputStream;
 //@Slf4j(topic = "MAIN_APP")
 public class App {
 
-
-
     public static void main(String[] args) {
-
         new App().runTheApp();
     }
 
